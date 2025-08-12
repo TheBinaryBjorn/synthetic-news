@@ -1,0 +1,22 @@
+Here's a summary of the latest breaking news in Artificial Intelligence from today, August 12, 2025:
+
+**Key Developments:**
+
+*   **Elon Musk confirms shutdown of Tesla's Dojo AI supercomputer:** This news, reported by Moneycontrol.com at 11:18 IST, indicates a significant shift in Tesla's AI strategy. TechCrunch also reported on this, stating that Tesla shut down Dojo, which Musk had previously said would be key to full self-driving.
+*   **OpenAI's GPT-5 is here and priced low:** TechCrunch reports that OpenAI has released GPT-5 and priced it aggressively, potentially sparking a price war in the AI industry. The New York Times also mentions that OpenAI will be "open sourcing" some of the technology that powers ChatGPT, freely sharing it with outside researchers and businesses.
+*   **NASA and Google are building an AI medical assistant:** TechCrunch highlights this collaboration aimed at keeping Mars-bound astronauts healthy.
+*   **Google tests revamped Google Finance with AI upgrades:** TechCrunch reports that Google is integrating AI and a live news feed into Google Finance.
+*   **Meta acquires AI audio startup WaveForms:** This acquisition, reported by TechCrunch, signals Meta's continued investment in AI.
+*   **Malaysian firm uses Chinese open-source AI to launch chatbot for Muslim world:** Moneycontrol.com reported this at 07:31 IST.
+*   **Former Googlers' AI startup OpenArt now creates 'brain rot' videos:** TechCrunch reports on this new development from OpenArt.
+
+**Other Notable AI News:**
+
+*   **High costs and thin margins threatening AI coding startups:** TechCrunch discusses the challenges faced by AI coding startups.
+*   **AI agents aren't the 'new Google,' says Airbnb CEO:** TechCrunch reports on this perspective from the Airbnb CEO.
+*   **The backlash against Duolingo going 'AI-first' didn't even matter:** TechCrunch notes the limited impact of the backlash against Duolingo's AI-first approach.
+*   **Elon Musk says X plans to introduce ads in Grok's responses:** TechCrunch reports on X's (formerly Twitter) plans for AI monetization.
+*   **Why AI 'hallucinates' and what experts are doing to stop it:** The Peninsula Qatar discusses efforts to connect AI to real-time, verified information sources to prevent "hallucinations."
+*   **US government sets out merit hiring plan in line with Trump priorities:** Global Government Forum reports on the US government's plans to attract talent for an AI revolution in government.
+*   **Clay, a Sales Tool for the A.I. Era, Raises $100 Million:** The New York Times reports on this significant funding for an AI sales tool.
+*   **Chatbots Can Go Into a Delusional Spiral:** The New York Times explores how prolonged interaction with chatbots can lead to delusional spirals.
