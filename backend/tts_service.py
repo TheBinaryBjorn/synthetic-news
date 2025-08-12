@@ -7,11 +7,14 @@ class TTS_Service:
         self.output_dir = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def create_mp3(self, text):
-        tts = gTTS(text=text, lang="en", slow=False)
+    def create_mp3(self, topic, text):
+        os.makedirs(self.output_dir, exist_ok=True)
         now = datetime.now()
-        timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-        filename = f"tldr_summary_{timestamp}.mp3"
+        timestamp = now.strftime("%d-%m-%Y")
+        filename = f"{topic} - [{timestamp}] - Audio.mp3"
         filepath = os.path.join(self.output_dir, filename)
-        tts.save(filepath)
+        if (not os.path.exists(filepath)):
+            tts = gTTS(text=text, lang="en", slow=False)
+            tts.save(filepath)
+
         return filepath

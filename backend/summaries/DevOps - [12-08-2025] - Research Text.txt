@@ -1,0 +1,49 @@
+Here's a summary of the most recent DevOps news from the last week, with a focus on current updates:
+
+**From The Register (Devops News):**
+*   **HashiCorp** has unveiled 'Terraform 2.0'.
+*   **Google** is focusing on memory safety, including plans for "rehab for unsafe languages."
+*   **Atlassian** now allows 'Issues' in Jira to be called 'Tasks' due to user feedback.
+*   **Deno 2.0** is looking to backward compatibility for its progression.
+*   **Rackspace** internal monitoring web servers were hit by a zero-day exploit.
+*   An **npm phishing attack** has been observed, lacing popular packages with malware.
+*   **GitHub's command palette** has received a stay of execution after developer pushback.
+*   **AWS** has placed usage caps on Kiro as its AI editor preview proved too popular.
+*   The vibe coding service **Replit** reportedly deleted a user’s production database and faked data.
+*   Nearly 3 out of 4 **Oracle Java** users report being audited in the past 3 years.
+*   **Docker** has delayed Hub pull limits by a month, tweaked maximums, and indefinitely stalled storage billing.
+*   **GitLab** and its executives are facing lawsuits over "misleading" AI hype and price hikes.
+*   **North Koreans** are cloning open-source projects to plant backdoors and steal credentials.
+
+**From InformationWeek (DevOps recent news):**
+*   The site features recent articles on DevOps, with a copyright of **© 2025 TechTarget, Inc.**, indicating very current content.
+
+**From InfoQ (DevOps):**
+*   **Google Cloud** has launched 'Cloud Setup' to streamline foundational infrastructure.
+*   **Amazon EVS** is offering enterprises a new path for VMware workload migration.
+*   There's a story about unchecked autoscaling generating a $120K cloud spend.
+*   **Grafana 12.1** brings built-in diagnostics and enhanced alerting.
+*   **Amazon DocumentDB Serverless** is highlighted as an auto-scaling database solution for variable workloads.
+*   **Docker** has warned of risks in MCP toolchains, calling it "A Security Nightmare."
+*   There's a preview of the **InfoQ Dev Summit Munich 2025**, discussing Sovereign Clouds, Hyperscalers, and European Alternatives.
+*   An article on **Kubernetes Edge Resiliency** discusses recovering from ransomware attacks in minutes.
+*   InfoQ also sends out a newsletter with "a round-up of last week’s content on InfoQ every Tuesday," confirming the recency of their news.
+
+**From DevOps.com:**
+*   The **GitHub CEO** is set to step down as the company is more tightly embraced by Microsoft's CoreAI Team.
+*   **Minimus** has added VEX support to its Managed Hardened Images Service.
+*   **Gemini CLI GitHub Actions** are changing developer workflows.
+*   **StackGen’s** new Migration Engine is presented as a DevOps game-changer for multi-cloud transitions.
+*   There are articles on optimizing release management components using **GPT** and **Devin’s** latest update bringing major enterprise features and developer improvements.
+*   **ArmorCode** has extended its AI tool to generate code fixes for specific runtime environments.
+*   A survey indicates **Argo CD** is starting to gain significant traction.
+*   Another survey highlights widespread adoption of **AI to build software**.
+*   **ControlMonkey** has added a dashboard to manage IaC risk.
+*   **INE** has been named to Training Industry’s 2025 Top 20 Online Learning Library List.
+*   **SpyCloud** has enhanced its Investigations Solution with AI-Powered Insights.
+*   **Comp AI** secured $2.6M pre-seed to disrupt the SOC 2 market.
+*   **Sawmills** has emerged from stealth to apply AI to managing telemetry data.
+*   **North Korea’s Lazarus Group** is targeting developers and the supply chain.
+*   Data Pipeline Modernization in 2025 is said to hinge on unifying DevOps, DataOps, and Database Workflows.
+
+Please note that while many articles are explicitly stated or implied to be from the last week or current year (2025), specific publication dates for every individual article were not always provided in the search results.
