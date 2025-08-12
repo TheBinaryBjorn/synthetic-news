@@ -14,6 +14,8 @@ __pycache__/
 
 # Generated files (optional)
 generated_audio/
+scripts/
+summaries/
 
 # IDE files
 .vscode/
