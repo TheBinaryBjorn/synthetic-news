@@ -1,6 +1,0 @@
-Here's the most recent news on Web Development from the last 24-48 hours:
-
-**From Smashing Magazine:**
-
-*   **Scroll Spy With CSS** (Published: August 12, 2025): Una Kravets explains how the new `scroll-target-group` CSS property allows for creating a trackable table of contents with just two lines of CSS.
-*   **Infinite Marquee Animation** (Published: August 11, 2025): Temani Afif details how to create an infinite repeating slide animation for a set of logos using modern CSS.
