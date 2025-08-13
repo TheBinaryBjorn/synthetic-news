@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from service_manager import ServiceManager
+from services.service_manager import ServiceManager
 
 app = FastAPI()
 service_manager = ServiceManager()

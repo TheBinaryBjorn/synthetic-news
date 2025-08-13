@@ -17,6 +17,7 @@ generated_audio/
 scripts/
 summaries/
 
+
 # IDE files
 .vscode/
 .idea/
@@ -33,8 +34,9 @@ Thumbs.db
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# pytest cache
+# pytest
 .pytest_cache/
+__pycache__/
 
 # Coverage reports
 htmlcov/

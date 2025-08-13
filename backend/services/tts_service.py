@@ -7,10 +7,13 @@ class TTS_Service(ABC):
     @abstractmethod
     def text_to_speech(self,text):
         pass
-
+"""
+    This class's main purpose is to convert text to speech.
+"""
 class gTTS_Service(TTS_Service):
-    def __init__(self, output_dir="generated_audio"):
-        self.output_dir = output_dir
+    DEFAULT_OUTPUT_DIR = "generated_audio"
+    def __init__(self):
+        self.output_dir = self.DEFAULT_OUTPUT_DIR
         os.makedirs(self.output_dir, exist_ok=True)
 
     def text_to_speech(self,text):
