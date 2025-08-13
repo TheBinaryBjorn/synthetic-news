@@ -2,12 +2,16 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 import google.generativeai as genai
+from abc import ABC,abstractmethod
 
-# Load environment variables once at the start of the script
-load_dotenv()
+class ScriptWriterService(ABC):
+    @abstractmethod
+    def generate_podcast_script(self,text):
+        pass
 
-class GeminiService:
+class GeminiWriterService(ScriptWriterService):
     def __init__(self):
+        load_dotenv()
         api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ValueError("GEMINI_API_KEY not found in environment variables.")
@@ -16,41 +20,13 @@ class GeminiService:
 
     def generate_podcast_script(self, topic, research_text):
         try:
-            current_date = datetime.now().strftime("%d-%m-%Y")
+            current_date = datetime.now().strftime("%U-%Y")
             os.makedirs("scripts", exist_ok = True)
             file_path = f"scripts/{topic} - [{current_date}] - Podcast Script.txt"
             if os.path.exists(file_path):
                 with open(file_path, "r", encoding="utf-8") as file:
                     podcast_script = file.read()
             else:
-                prompt = f"""Transform this research text into an engaging podcast script for text-to-speech conversion.
-
-                REQUIREMENTS:
-                - Write as a friendly podcast host speaking directly to listeners
-                - Use simple, conversational language - avoid jargon or complex terms
-                - Structure with clear sections and natural transitions
-                - Keep total length of 5 minutes when spoken (roughly 625-750 words)
-                - Be Objective and not political
-
-                TTS OPTIMIZATION:
-                - Avoid using any markdown formatting, special characters, or emojis. 
-                - Use periods for natural pauses, not commas in long sentences
-                - Spell out numbers and abbreviations (AI becomes "artificial intelligence")
-                - Add transition phrases like "Now," "Here's what's interesting," "Moving on"
-                - Break up long sentences into shorter ones for better flow
-
-
-                STRUCTURE:
-                1. Brief engaging opening (15-20 words)
-                2. 3-4 main points with smooth transitions between them
-                3. Conclude with key takeaway or forward-looking statement
-
-                TONE: Enthusiastic but informative, like explaining exciting news to a friend
-
-                SOURCE TEXT:
-                {research_text}
-
-                Create the podcast script now:"""
                 prompt = f"""PODCAST SCRIPT GENERATOR
 
                 MAIN GOAL: Transform the provided research text into a conversational podcast script. The final script must be written to sound natural and clear when read aloud by Google Text-to-Speech.
@@ -143,3 +119,36 @@ class GeminiService:
         except Exception as e:
             print(f"Error producing script: {e}")
             return "Error creating script."
+        
+"""
+OLD PROMPT:
+                prompt = f"Transform this research text into an engaging podcast script for text-to-speech conversion.
+
+                REQUIREMENTS:
+                - Write as a friendly podcast host speaking directly to listeners
+                - Use simple, conversational language - avoid jargon or complex terms
+                - Structure with clear sections and natural transitions
+                - Keep total length of 5 minutes when spoken (roughly 625-750 words)
+                - Be Objective and not political
+
+                TTS OPTIMIZATION:
+                - Avoid using any markdown formatting, special characters, or emojis. 
+                - Use periods for natural pauses, not commas in long sentences
+                - Spell out numbers and abbreviations (AI becomes "artificial intelligence")
+                - Add transition phrases like "Now," "Here's what's interesting," "Moving on"
+                - Break up long sentences into shorter ones for better flow
+
+
+                STRUCTURE:
+                1. Brief engaging opening (15-20 words)
+                2. 3-4 main points with smooth transitions between them
+                3. Conclude with key takeaway or forward-looking statement
+
+                TONE: Enthusiastic but informative, like explaining exciting news to a friend
+
+                SOURCE TEXT:
+                {research_text}
+
+                Create the podcast script now:"
+
+"""
