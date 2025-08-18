@@ -3,13 +3,15 @@ name: Continuous Integration
 on:
   push:
     branches:
+      - development
       - main
   pull_request:
     branches:
+      - development
       - main
 
 jobs:
-  backend-ci:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
