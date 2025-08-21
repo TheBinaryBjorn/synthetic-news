@@ -2,11 +2,12 @@ from .research_service import TavilyResearchService
 from .script_writer_service import GeminiWriterService
 from .tts_service import gTTS_Service
 from datetime import datetime
+from .llm_service import GeminiService
 
 class ServiceManager():
     def __init__(self):
         self.research_service = TavilyResearchService()
-        self.script_writer_service = GeminiWriterService()
+        self.script_writer_service = GeminiWriterService(GeminiService())
         self.tts_service = gTTS_Service()
         self.allowed_topics = ["AI", 
                   "Artificial Intelligence", 

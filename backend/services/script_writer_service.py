@@ -1,8 +1,7 @@
 import os
 from datetime import datetime
-from dotenv import load_dotenv
-import google.generativeai as genai
 from abc import ABC,abstractmethod
+from .llm_service import LLM_Service
 
 class ScriptWriterService(ABC):
     @abstractmethod
@@ -10,13 +9,8 @@ class ScriptWriterService(ABC):
         pass
 
 class GeminiWriterService(ScriptWriterService):
-    def __init__(self):
-        load_dotenv()
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
-            raise ValueError("GEMINI_API_KEY not found in environment variables.")
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-2.5-flash")
+    def __init__(self,llm_service: LLM_Service):
+        self.llm_service = llm_service
 
     def generate_podcast_script(self, topic, research_text):
         try:
@@ -111,44 +105,10 @@ class GeminiWriterService(ScriptWriterService):
                 SOURCE TEXT:
                 {research_text}"""
             
-                response = self.model.generate_content(prompt)
-                podcast_script = response.text
+                podcast_script = self.llm_service.send_message_to_llm(prompt)
                 with open(file_path,"w",encoding="utf-8") as file:
                     file.write(podcast_script)
             return podcast_script
         except Exception as e:
             print(f"Error producing script: {e}")
             return "Error creating script."
-        
-"""
-OLD PROMPT:
-                prompt = f"Transform this research text into an engaging podcast script for text-to-speech conversion.
-
-                REQUIREMENTS:
-                - Write as a friendly podcast host speaking directly to listeners
-                - Use simple, conversational language - avoid jargon or complex terms
-                - Structure with clear sections and natural transitions
-                - Keep total length of 5 minutes when spoken (roughly 625-750 words)
-                - Be Objective and not political
-
-                TTS OPTIMIZATION:
-                - Avoid using any markdown formatting, special characters, or emojis. 
-                - Use periods for natural pauses, not commas in long sentences
-                - Spell out numbers and abbreviations (AI becomes "artificial intelligence")
-                - Add transition phrases like "Now," "Here's what's interesting," "Moving on"
-                - Break up long sentences into shorter ones for better flow
-
-
-                STRUCTURE:
-                1. Brief engaging opening (15-20 words)
-                2. 3-4 main points with smooth transitions between them
-                3. Conclude with key takeaway or forward-looking statement
-
-                TONE: Enthusiastic but informative, like explaining exciting news to a friend
-
-                SOURCE TEXT:
-                {research_text}
-
-                Create the podcast script now:"
-
-"""

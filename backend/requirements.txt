@@ -8,4 +8,4 @@ langchain_google_genai==2.1.9
 protobuf==6.32.0
 python-dotenv==1.1.1
 schedule==1.2.2
-google-generativeai
+google-genai
