@@ -3,8 +3,16 @@ from .research_service import TavilyResearchService
 from .script_writer_service import GeminiWriterService
 from .tts_service import gTTS_Service
 from .llm_service import GeminiService
-
+"""
+This Module provides a management service to all services used in
+the program.
+It handles the production of the podcast episode by utilizing
+all the services made.
+"""
 class ServiceManager():
+    """
+    Manages all services to produce a podcast episode from a given topic.
+    """
     def __init__(self):
         self.research_service = TavilyResearchService()
         self.script_writer_service = GeminiWriterService(GeminiService())
@@ -29,7 +37,10 @@ class ServiceManager():
                   ]
     
     def produce_podcast(self,topic):
-        if(topic in self.allowed_topics):
+        """
+        Produces and mp3 file based on the given topic by utilizing all services.
+        """
+        if topic in self.allowed_topics:
             try:
                 print(f"Making file: {datetime.now()}")
                 research_text = self.research_service.run_research(topic)
