@@ -1,11 +1,11 @@
+import os
 from abc import ABC, abstractmethod
 from dotenv import load_dotenv
-import os
 from google import genai
 
 class LLM_Service(ABC):
     @abstractmethod
-    def send_message_to_llm(text: str) -> str:
+    def send_message_to_llm(self,text: str) -> str:
         pass
 
 class GeminiService(LLM_Service):

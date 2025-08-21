@@ -1,7 +1,7 @@
+from datetime import datetime
 from .research_service import TavilyResearchService
 from .script_writer_service import GeminiWriterService
 from .tts_service import gTTS_Service
-from datetime import datetime
 from .llm_service import GeminiService
 
 class ServiceManager():

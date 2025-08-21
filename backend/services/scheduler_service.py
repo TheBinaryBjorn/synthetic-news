@@ -1,6 +1,8 @@
-import schedule
 import time
 from datetime import datetime
+import schedule
+
+
 
 class SchedulerService():
     def __init__(self, task_provider):
