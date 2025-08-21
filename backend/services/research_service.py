@@ -8,12 +8,21 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.tools.tavily_search import TavilySearchResults
 
 class ResearchService(ABC):
+    """
+    Abstract base class for research services.
+    """
     @abstractmethod
     def run_research(self,topic):
         pass
 
 class TavilyResearchService(ResearchService):
+    """
+    A service that performs research using the Tavily API and a Gemini model.
+    """
     def __init__(self):
+        """
+        Initializes the research agent with the LLM, tools, and a prompt.
+        """
         print("Initializing Reaserch Agent...")
         load_dotenv()
         gemini_api_key = os.getenv("GEMINI_API_KEY")
@@ -46,7 +55,16 @@ class TavilyResearchService(ResearchService):
         self.agent = create_tool_calling_agent(self.llm,self.tools,self.prompt)
         self.agent_executor = AgentExecutor(agent=self.agent, tools=self.tools, verbose=True)
 
-    def run_research(self,topic):
+    def run_research(self,topic:str)->str:
+        """
+        Executes a research query and saves the summary to a file.
+        
+        Args:
+            topic (str): The subject of the research query.
+
+        Returns:
+            str: The research summary text.
+        """
         print(f"\n{datetime.now()}: Starting research on: '{topic}'...")
         try:
             current_date = datetime.now().strftime("%d-%m-%Y")
