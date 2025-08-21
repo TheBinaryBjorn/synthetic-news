@@ -1,7 +1,7 @@
 from datetime import datetime
 from .research_service import TavilyResearchService
 from .script_writer_service import GeminiWriterService
-from .tts_service import gTTS_Service
+from .tts_service import GoogleTtsService
 from .llm_service import GeminiService
 """
 This Module provides a management service to all services used in
@@ -16,7 +16,7 @@ class ServiceManager():
     def __init__(self):
         self.research_service = TavilyResearchService()
         self.script_writer_service = GeminiWriterService(GeminiService())
-        self.tts_service = gTTS_Service()
+        self.tts_service = GoogleTtsService()
         self.allowed_topics = ["AI", 
                   "Artificial Intelligence", 
                   "Low Level Programming", 
