@@ -1,11 +1,11 @@
-from fastapi import FastAPI
-from fastapi.responses import FileResponse
-from services.service_manager import ServiceManager
-
 """
 This module provides a FastAPI application to serve podcast summaries.
 It handles requests to generate and retrieve audio files based on a given topic.
 """
+
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from services.service_manager import ServiceManager
 
 app = FastAPI()
 service_manager = ServiceManager()
@@ -30,7 +30,6 @@ async def get_summary_audio(topic: str):
         FileResponse: An audio file of the podcast summary.
         dict: An error message if the operation fails.
     """
-    # Replace all occourances of '_' with ' '
     topic = topic.replace("_"," ")
     try:
         audio_file_path = service_manager.produce_podcast(topic)
