@@ -1,5 +1,9 @@
-from backend.services.tts_service import gTTS_Service
+"""
+This module contains unit tests for the gTTS_Service class.
+It verifies the correct behavior of the constructor and its effects on the file system.
+"""
 import os
+from backend.services.tts_service import gTTS_Service
 
 def test_constructor_creates_gtts_service_object(tmp_path,monkeypatch):
     """
@@ -17,7 +21,8 @@ def test_constructor_creates_gtts_service_object(tmp_path,monkeypatch):
 def test_constructor_creates_generated_audio_dir(tmp_path,monkeypatch):
     """
         Test ID: TC-002
-        Test Objective: Verify that the constructor successfully creates a 'generated_audio' directory.
+        Test Objective: Verify that the constructor successfully creates a
+        'generated_audio' directory.
     """
     monkeypatch.chdir(tmp_path)
 
