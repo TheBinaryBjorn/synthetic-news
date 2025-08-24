@@ -5,17 +5,20 @@ It handles requests to generate and retrieve audio files based on a given topic.
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from services.service_manager import ServiceManager
+
+from backend.services.service_manager import ServiceManager
 
 app = FastAPI()
 service_manager = ServiceManager()
+
 
 @app.get("/")
 def read_root():
     """
     Handles the root endpoint to confirm the API is running.
     """
-    return {"Hello":"World"}
+    return {"Hello": "World"}
+
 
 @app.get("/get-summary-audio")
 async def get_summary_audio(topic: str):
@@ -30,9 +33,9 @@ async def get_summary_audio(topic: str):
         FileResponse: An audio file of the podcast summary.
         dict: An error message if the operation fails.
     """
-    topic = topic.replace("_"," ")
+    topic = topic.replace("_", " ")
     try:
         audio_file_path = service_manager.produce_podcast(topic)
-        return FileResponse(audio_file_path,media_type="audio/mpeg")
+        return FileResponse(audio_file_path, media_type="audio/mpeg")
     except Exception as e:
-        return {"error":f"{e}"}
+        return {"error": f"{e}"}

@@ -2,24 +2,30 @@
 This module is in charge of creating podcast scripts from given
 summaries.
 """
+
 import os
-from abc import ABC,abstractmethod
+from abc import ABC, abstractmethod
 from datetime import datetime
+
 from .llm_service import LlmService
+
 
 class ScriptWriterService(ABC):
     """
     An abstract class used as an interface.
     """
+
     @abstractmethod
-    def generate_podcast_script(self,topic, research_text):
+    def generate_podcast_script(self, topic, research_text):
         pass
+
 
 class GeminiWriterService(ScriptWriterService):
     """
     A script writer class that uses gemini as it's LLM.
     """
-    def __init__(self,llm_service: LlmService):
+
+    def __init__(self, llm_service: LlmService):
         """
         Initializes the Class with an LLM service.
         """
@@ -31,7 +37,7 @@ class GeminiWriterService(ScriptWriterService):
         """
         try:
             current_date = datetime.now().strftime("%U-%Y")
-            os.makedirs("scripts", exist_ok = True)
+            os.makedirs("scripts", exist_ok=True)
             file_path = f"scripts/{topic} - [{current_date}] - Podcast Script.txt"
             if os.path.exists(file_path):
                 with open(file_path, "r", encoding="utf-8") as file:
@@ -120,9 +126,9 @@ class GeminiWriterService(ScriptWriterService):
 
                 SOURCE TEXT:
                 {research_text}"""
-            
+
                 podcast_script = self.llm_service.send_message_to_llm(prompt)
-                with open(file_path,"w",encoding="utf-8") as file:
+                with open(file_path, "w", encoding="utf-8") as file:
                     file.write(podcast_script)
             return podcast_script
         except Exception as e:

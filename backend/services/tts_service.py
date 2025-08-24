@@ -2,23 +2,29 @@
 This Module is in charge of all Text to Speech classes and
 methods.
 """
+
 import os
 from abc import ABC, abstractmethod
 from datetime import datetime
+
 from gtts import gTTS
+
 
 class TtsService(ABC):
     """
     Abstract base class for all Text-to-Speech services.
     """
+
     @abstractmethod
-    def convert_text_to_speech(self,text):
+    def convert_text_to_speech(self, text):
         pass
+
 
 class GoogleTtsService(TtsService):
     """
     A concrete implementation of TtsService that uses the gTTS library.
     """
+
     DEFAULT_OUTPUT_DIR = "generated_audio"
 
     def __init__(self):
@@ -28,7 +34,7 @@ class GoogleTtsService(TtsService):
         self.output_dir = self.DEFAULT_OUTPUT_DIR
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def convert_text_to_speech(self,text: str):
+    def convert_text_to_speech(self, text: str):
         """
         Receives a text input and creates an mp3 speech file.
 
