@@ -5,7 +5,7 @@ summaries.
 import os
 from abc import ABC,abstractmethod
 from datetime import datetime
-from .llm_service import LLM_Service
+from .llm_service import LlmService
 
 class ScriptWriterService(ABC):
     """
@@ -19,7 +19,7 @@ class GeminiWriterService(ScriptWriterService):
     """
     A script writer class that uses gemini as it's LLM.
     """
-    def __init__(self,llm_service: LLM_Service):
+    def __init__(self,llm_service: LlmService):
         """
         Initializes the Class with an LLM service.
         """
