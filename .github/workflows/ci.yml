@@ -39,4 +39,4 @@ jobs:
       working-directory: ./backend
       run: |
         pip install pylint
-        pylint .
+        pylint . --rcfile=pyproject.toml
