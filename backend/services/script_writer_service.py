@@ -1,18 +1,34 @@
+"""
+This module is in charge of creating podcast scripts from given
+summaries.
+"""
 import os
 from abc import ABC,abstractmethod
 from datetime import datetime
 from .llm_service import LLM_Service
 
 class ScriptWriterService(ABC):
+    """
+    An abstract class used as an interface.
+    """
     @abstractmethod
-    def generate_podcast_script(self,text):
+    def generate_podcast_script(self,topic, research_text):
         pass
 
 class GeminiWriterService(ScriptWriterService):
+    """
+    A script writer class that uses gemini as it's LLM.
+    """
     def __init__(self,llm_service: LLM_Service):
+        """
+        Initializes the Class with an LLM service.
+        """
         self.llm_service = llm_service
 
     def generate_podcast_script(self, topic, research_text):
+        """
+        Generates a podcast script as a string from given topic and research summary.
+        """
         try:
             current_date = datetime.now().strftime("%U-%Y")
             os.makedirs("scripts", exist_ok = True)
@@ -52,7 +68,7 @@ class GeminiWriterService(ScriptWriterService):
                         Closing: "That's your update for today. See you tomorrow."
 
                 3. Critical gTTS Optimization Rules
-                    Avoid using any markdown formatting, special characters, or emojis. 
+                    Avoid using any markdown formatting, special characters, or emojis.
                     Speaking Style: Write exactly how you would speak out loud, not how you would write for reading.
 
                     Sentence Length: Use short, simple sentences. Break up longer thoughts immediately into multiple sentences to improve clarity.
