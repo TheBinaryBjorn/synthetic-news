@@ -1,21 +1,52 @@
+"""
+This module provides a FastAPI application to serve podcast summaries.
+It handles requests to generate and retrieve audio files based on a given topic.
+"""
+
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from services.service_manager import ServiceManager
+
+from backend.services.service_manager import ServiceManager
+from backend.services.exceptions import (
+    ResearchException,
+    ScriptWriterException,
+    TtsException,
+    TopicException,
+)
 
 app = FastAPI()
 service_manager = ServiceManager()
 
+
 @app.get("/")
 def read_root():
-    return {"Hello":"World"}
+    """
+    Handles the root endpoint to confirm the API is running.
+    """
+    return {"Hello": "World"}
+
 
 @app.get("/get-summary-audio")
 async def get_summary_audio(topic: str):
-    # Replace all occourances of '_' with ' '
-    topic = topic.replace("_"," ")
+    """
+    Generates an audio file of a podcast summary for a given topic.
+
+    Args:
+        topic (str): The topic for the podcast summary.
+                     Underscores are replaced with spaces.
+
+    Returns:
+        FileResponse: An audio file of the podcast summary.
+        dict: An error message if the operation fails.
+    """
+    topic = topic.replace("_", " ")
     try:
         audio_file_path = service_manager.produce_podcast(topic)
-        return FileResponse(audio_file_path,media_type="audio/mpeg")
-    except Exception as e:
-        return {"error":f"{e}"}
-    
+        return FileResponse(audio_file_path, media_type="audio/mpeg")
+    except (
+        ResearchException,
+        ScriptWriterException,
+        TtsException,
+        TopicException,
+    ) as e:
+        return {"error": f"{e}"}

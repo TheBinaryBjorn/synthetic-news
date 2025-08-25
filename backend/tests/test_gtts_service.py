@@ -1,23 +1,32 @@
-from backend.services.tts_service import gTTS_Service
+"""
+This module contains unit tests for the gTTS_Service class.
+It verifies the correct behavior of the constructor and its effects on the file system.
+"""
+
 import os
 
-def test_constructor_creates_gtts_service_object(tmp_path,monkeypatch):
+from backend.services.tts_service import GoogleTtsService
+
+
+def test_constructor_creates_gtts_service_object(tmp_path, monkeypatch):
     """
-        Test ID: TC-001
-        Test Objective: Verify that the constructor successfully creates an object.
+    Test ID: TC-001
+    Test Objective: Verify that the constructor successfully creates an object.
     """
     # Temporarily change the current working directory to isolate the test.
     monkeypatch.chdir(tmp_path)
     # Create instance of the class
-    gtts_service = gTTS_Service()
+    gtts_service = GoogleTtsService()
 
     # Assert that the created object is an instance of the class gTTS_Service.
-    assert isinstance(gtts_service, gTTS_Service)
+    assert isinstance(gtts_service, GoogleTtsService)
 
-def test_constructor_creates_generated_audio_dir(tmp_path,monkeypatch):
+
+def test_constructor_creates_generated_audio_dir(tmp_path, monkeypatch):
     """
-        Test ID: TC-002
-        Test Objective: Verify that the constructor successfully creates a 'generated_audio' directory.
+    Test ID: TC-002
+    Test Objective: Verify that the constructor successfully creates a
+    'generated_audio' directory.
     """
     monkeypatch.chdir(tmp_path)
 
@@ -25,7 +34,7 @@ def test_constructor_creates_generated_audio_dir(tmp_path,monkeypatch):
     assert not os.path.isdir("generated_audio")
 
     # Create an instance of gTTS_Service()
-    service = gTTS_Service()
+    GoogleTtsService()
 
     # Assert that the generated_audio directory was created.
     assert os.path.isdir("generated_audio")
