@@ -1,4 +1,4 @@
-# The AI-Powered Weekly Brief
+# Synthetic News
 ### Project Description
 The AI-Powered Weekly Brief is a news site that automatically generates a concise podcast episode every week. The project aims to save listeners hours of research by providing digestible summaries of key news events.
 
