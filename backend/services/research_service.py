@@ -51,7 +51,7 @@ class TavilyResearchService(ResearchService):
             self.llm = ChatGoogleGenerativeAI(
                 model="gemini-2.5-flash", google_api_key=gemini_api_key, temperature=0
             )
-        except Exception as e:
+        except (ValueError, ConnectionError) as e:
             print(f"Error initializing LLM: {e}")
             raise LlmException(e) from e
         # Set up tools
@@ -82,7 +82,7 @@ class TavilyResearchService(ResearchService):
             self.agent_executor = AgentExecutor(
                 agent=self.agent, tools=self.tools, verbose=True
             )
-        except Exception as e:
+        except (ValueError, KeyError, ConnectionError, Exception) as e:
             raise TavilyException(e) from e
 
     def run_research(self, topic: str) -> str:
@@ -99,7 +99,7 @@ class TavilyResearchService(ResearchService):
         try:
             current_date = datetime.now().strftime("%d-%m-%Y")
             date_for_summary_file = datetime.now().strftime("%U-%Y")
-        except Exception as e:
+        except (ValueError, TypeError, OverflowError) as e:
             raise DateTimeException(e) from e
         os.makedirs("summaries", exist_ok=True)
         summary_file_path = f"""summaries/{topic} -
