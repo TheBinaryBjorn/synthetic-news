@@ -5,6 +5,8 @@ It verifies the correct behavior of the constructor and its effects on the file 
 
 import os
 
+import pytest
+
 from backend.services.tts_service import GoogleTtsService
 
 
@@ -38,3 +40,23 @@ def test_constructor_creates_generated_audio_dir(tmp_path, monkeypatch):
 
     # Assert that the generated_audio directory was created.
     assert os.path.isdir("generated_audio")
+
+
+def test_convert_text_to_speech_returns_exception_on_non_string(tmp_path, monkeypatch):
+    """
+    Test ID: TC-003
+    Test Objective: Verify that the method convert_text_to_speech
+    throws a TypeError when receiving a non string argument.
+    """
+    monkeypatch.chdir(tmp_path)
+
+    google_tts_service = GoogleTtsService()
+
+    with pytest.raises(TypeError):
+        google_tts_service.convert_text_to_speech(-1)
+
+    with pytest.raises(TypeError):
+        google_tts_service.convert_text_to_speech(None)
+
+    with pytest.raises(TypeError):
+        google_tts_service.convert_text_to_speech([1, 2, 3])
