@@ -34,7 +34,7 @@ class GoogleTtsService(TtsService):
         self.output_dir = self.DEFAULT_OUTPUT_DIR
         os.makedirs(self.output_dir, exist_ok=True)
 
-    def convert_text_to_speech(self, text: str):
+    def convert_text_to_speech(self, text: str) -> gTTS:
         """
         Receives a text input and creates an mp3 speech file.
 
@@ -42,8 +42,10 @@ class GoogleTtsService(TtsService):
             text (str): The text to convert to speech.
 
         Returns:
-            mp3 file path.
+            gTTS Object.
         """
+        if not isinstance(text, str):
+            raise TypeError
         tts = gTTS(text=text, lang="en", slow=False)
         return tts
 
