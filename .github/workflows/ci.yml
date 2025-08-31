@@ -38,10 +38,8 @@ jobs:
 
     - name: Run Code Coverage
       working-directory: ./backend
-      run: pytest --cov=. --cov-report=xml
+      run: pytest --cov=.
 
     - name: Run Linter
       working-directory: ./backend
-      run: |
-        pip install pylint
-        pylint . --rcfile=pyproject.toml
+      run: pylint . --rcfile=pyproject.toml
