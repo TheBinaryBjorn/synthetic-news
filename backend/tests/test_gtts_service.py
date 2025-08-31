@@ -60,3 +60,14 @@ def test_convert_text_to_speech_returns_exception_on_non_string(tmp_path, monkey
 
     with pytest.raises(TypeError):
         google_tts_service.convert_text_to_speech([1, 2, 3])
+
+def test_convert_text_to_speech_returns_valid_gTTS_object(tmp_path, monkeypatch):
+    """
+    Test ID: TC-004
+    Test Objective: Verify that the method convert_text_to_speech
+    returns a valid gTTS object.
+    """
+    pass
+
+def test_create_mp3_file_creates_mp3_file(tmp_path, monkeypatch):
+    pass
