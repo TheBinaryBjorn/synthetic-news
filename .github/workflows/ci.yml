@@ -30,11 +30,15 @@ jobs:
         pip install -r requirements.txt
         pip install pytest pytest-cov pylint
 
+    - name: Cache Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{runner.os}}-pip${{ hashFiles('**/requirements.txt') }}
+        
     - name: Run Tests
       working-directory: ./backend
-      run: |
-        pip install pytest
-        pytest
+      run: pytest
 
     - name: Run Code Coverage
       working-directory: ./backend
