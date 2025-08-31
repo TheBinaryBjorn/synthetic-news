@@ -7,7 +7,6 @@ export default function SearchBar() {
         className="ml-3 duration-300 w-full"
         placeholder="What topic interests you today?"
       ></input>
-
     </div>
   );
 }
