@@ -7,16 +7,12 @@ all the services made.
 
 from datetime import datetime
 
+from .exceptions import (ResearchException, ScriptWriterException,
+                         TopicException, TtsException)
 from .llm_service import GeminiService
 from .research_service import TavilyResearchService
 from .script_writer_service import GeminiWriterService
 from .tts_service import GoogleTtsService
-from .exceptions import (
-    ResearchException,
-    TtsException,
-    ScriptWriterException,
-    TopicException,
-)
 
 
 class ServiceManager:

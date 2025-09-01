@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v4
 
     - name: Set up Python
@@ -23,20 +23,29 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Cache Dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{runner.os}}-pip${{ hashFiles('**/requirements.txt') }}
+        
+    - name: Install Dependencies
       working-directory: ./backend
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest pytest-cov pylint
 
-    - name: Run tests
-      working-directory: ./backend
-      run: |
-        pip install pytest
-        pytest
 
-    - name: Run linter
+
+    - name: Run Tests
       working-directory: ./backend
-      run: |
-        pip install pylint
-        pylint . --rcfile=pyproject.toml
+      run: pytest
+
+    - name: Run Code Coverage
+      working-directory: ./backend
+      run: pytest --cov=.
+
+    - name: Run Linter
+      working-directory: ./backend
+      run: pylint . --rcfile=pyproject.toml

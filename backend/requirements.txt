@@ -9,3 +9,6 @@ protobuf==6.32.0
 python-dotenv==1.1.1
 schedule==1.2.2
 google-genai
+pytest
+pytest-cov
+pylint
