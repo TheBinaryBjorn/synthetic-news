@@ -13,12 +13,8 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from backend.services.exceptions import (
-    ApiKeyException,
-    LlmException,
-    DateTimeException,
-    TavilyException,
-)
+from backend.services.exceptions import (ApiKeyException, DateTimeException,
+                                         LlmException, TavilyException)
 
 
 class ResearchService(ABC):
