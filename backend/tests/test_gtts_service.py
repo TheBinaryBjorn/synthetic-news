@@ -64,7 +64,7 @@ def test_convert_text_to_speech_returns_exception_on_non_string(tmp_path, monkey
         google_tts_service.convert_text_to_speech([1, 2, 3])
 
 
-def test_convert_text_to_speech_returns_valid_gTTS_object(tmp_path, monkeypatch):
+def test_convert_text_to_speech_returns_valid_gtts_object(tmp_path, monkeypatch):
     """
     Test ID: TC-004
     Test Objective: Verify that the method convert_text_to_speech
