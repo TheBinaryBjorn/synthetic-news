@@ -2,6 +2,7 @@
 This Module is in charge of testing the file llm_service,
 including GeminiService class.
 """
+
 from unittest.mock import Mock
 
 import pytest
@@ -167,6 +168,7 @@ def test_send_message_to_llm_raises_llm_message_exception_when_fails():
     with pytest.raises(LlmMessageException):
         llm_service_objcet.send_message_to_llm(VALID_MESSAGE)
 
+
 def test_send_message_to_llm_with_invalid_text_raises_type_error():
     """
     Test ID: TC-021
@@ -183,9 +185,10 @@ def test_send_message_to_llm_with_invalid_text_raises_type_error():
 
     with pytest.raises(TypeError):
         llm_service_object.send_message_to_llm(-1)
-    
+
     with pytest.raises(TypeError):
         llm_service_object.send_message_to_llm(None)
+
 
 def test_send_message_to_llm_with_empty_string_text_raises_value_error():
     """
@@ -201,6 +204,7 @@ def test_send_message_to_llm_with_empty_string_text_raises_value_error():
     with pytest.raises(ValueError):
         llm_service_object.send_message_to_llm("")
 
+
 def test_send_message_to_llm_with_whitespace_string_text_raises_value_error():
     """
     Test ID: TC-021
@@ -215,6 +219,7 @@ def test_send_message_to_llm_with_whitespace_string_text_raises_value_error():
     with pytest.raises(ValueError):
         llm_service_object.send_message_to_llm("   ")
 
+
 def test_send_message_to_llm_throws_llm_message_error_on_bad_response():
     """
     Test ID: TC-023
@@ -228,6 +233,7 @@ def test_send_message_to_llm_throws_llm_message_error_on_bad_response():
 
     with pytest.raises(LlmMessageException, match="Failed to extract response."):
         llm_service_object.send_message_to_llm(VALID_MESSAGE)
+
 
 def test_send_message_to_llm_throws_llm_message_error_on_empty_response():
     """

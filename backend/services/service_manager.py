@@ -4,10 +4,11 @@ the program.
 It handles the production of the podcast episode by utilizing
 all the services made.
 """
-import os
-from dotenv import load_dotenv
 
+import os
 from datetime import datetime
+
+from dotenv import load_dotenv
 from google import genai
 
 from .exceptions import (ResearchException, ScriptWriterException,
@@ -25,7 +26,7 @@ class ServiceManager:
 
     def __init__(self):
         load_dotenv()
-        api_key=os.getenv("GEMINI_API_KEY")
+        api_key = os.getenv("GEMINI_API_KEY")
         self.research_service = TavilyResearchService()
         client = genai.Client(api_key=api_key)
         self.script_writer_service = GeminiWriterService(GeminiService(client))

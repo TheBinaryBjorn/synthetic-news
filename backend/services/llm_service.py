@@ -4,10 +4,10 @@ This module is in charge of sending messages to an LLM model.
 
 from abc import ABC, abstractmethod
 
-
 from google import genai
 
 from .exceptions import LlmMessageException
+
 
 class LlmService(ABC):
     """
@@ -49,20 +49,20 @@ class GeminiService(LlmService):
             raise TypeError
         if text == "" or text.strip() == "":
             raise ValueError
-        
+
         try:
             response = self.client.models.generate_content(
                 model=self.model, contents=text
             )
         except Exception as e:
             raise LlmMessageException("LLM Model Failed.") from e
-        
+
         try:
             return_text = response.text
         except Exception as e:
             raise LlmMessageException("Failed to extract response.") from e
-        
+
         if not return_text:
             raise LlmMessageException("Error: Empty LLM response.")
-        
+
         return response.text
