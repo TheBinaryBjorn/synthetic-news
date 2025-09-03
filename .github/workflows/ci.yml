@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Build Docker Image
-      run: docker build -t backend .
+      run: docker build -t backend ./backend
 
     - name: Run Tests in Docker
       run: docker run --rm backend pytest
@@ -28,4 +28,4 @@ jobs:
       run: docker run --rm backend pytest --cov=.
 
     - name: Run Linter in Docker
-      run: docker run --rm backend pylint . --rcfile=pyproject.toml
+      run: docker run --rm backend pylint . --rcfile=./backend/pyproject.toml
