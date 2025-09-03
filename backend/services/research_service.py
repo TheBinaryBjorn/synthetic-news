@@ -13,8 +13,8 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from backend.services.exceptions import (ApiKeyException, DateTimeException,
-                                         LlmException, TavilyException)
+from .exceptions import (ApiKeyException, DateTimeException, LlmException,
+                         TavilyException)
 
 
 class ResearchService(ABC):
@@ -98,8 +98,9 @@ class TavilyResearchService(ResearchService):
         except (ValueError, TypeError, OverflowError) as e:
             raise DateTimeException(e) from e
         os.makedirs("summaries", exist_ok=True)
-        summary_file_path = f"""summaries/{topic} -
-        [{date_for_summary_file}] - Research Text.txt"""
+        summary_file_path = (
+            f"""summaries/{topic} - [{date_for_summary_file}] - Research Text.txt"""
+        )
         if os.path.exists(summary_file_path):
             # read and return
             with open(summary_file_path, "r", encoding="utf-8") as file:

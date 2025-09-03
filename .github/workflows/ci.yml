@@ -17,35 +17,15 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+    
+    - name: Build Docker Image
+      run: docker build -t backend .
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+    - name: Run Tests in Docker
+      run: docker run --rm backend pytest
 
-    - name: Cache Dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pip
-        key: ${{runner.os}}-pip${{ hashFiles('**/requirements.txt') }}
-        
-    - name: Install Dependencies
-      working-directory: ./backend
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest pytest-cov pylint
+    - name: Run Code Coverage in Docker
+      run: docker run --rm backend pytest --cov=.
 
-
-
-    - name: Run Tests
-      working-directory: ./backend
-      run: pytest
-
-    - name: Run Code Coverage
-      working-directory: ./backend
-      run: pytest --cov=.
-
-    - name: Run Linter
-      working-directory: ./backend
-      run: pylint . --rcfile=pyproject.toml
+    - name: Run Linter in Docker
+      run: docker run --rm backend pylint . --rcfile=./backend/pyproject.toml

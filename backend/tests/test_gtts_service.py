@@ -9,7 +9,7 @@ import re
 import pytest
 from gtts import gTTS
 
-from backend.services.tts_service import GoogleTtsService
+from ..services.tts_service import GoogleTtsService
 
 
 def test_constructor_creates_gtts_service_object(tmp_path, monkeypatch):

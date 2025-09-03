@@ -29,6 +29,13 @@ class LlmException(Exception):
     """
 
 
+class LlmMessageException(Exception):
+    """
+    This class is an exception raised when sending a message
+    to the selected LLM api fails.
+    """
+
+
 class ApiKeyException(Exception):
     """
     This class is an exception raised when there is trouble
