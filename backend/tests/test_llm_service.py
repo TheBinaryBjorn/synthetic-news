@@ -8,8 +8,8 @@ from unittest.mock import Mock
 import pytest
 from google import genai
 
-from backend.services.exceptions import LlmMessageException
-from backend.services.llm_service import GeminiService
+from ..services.exceptions import LlmMessageException
+from ..services.llm_service import GeminiService
 
 DEFAULT_MODEL = "gemini-2.5-flash"
 CUSTOM_MODEL = "gemini-1.5-pro"

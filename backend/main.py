@@ -6,9 +6,9 @@ It handles requests to generate and retrieve audio files based on a given topic.
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
-from services.exceptions import (ResearchException, ScriptWriterException,
+from .services.exceptions import (ResearchException, ScriptWriterException,
                                  TopicException, TtsException)
-from services.service_manager import ServiceManager
+from .services.service_manager import ServiceManager
 
 app = FastAPI()
 service_manager = ServiceManager()
