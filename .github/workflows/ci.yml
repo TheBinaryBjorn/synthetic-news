@@ -19,7 +19,6 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Build Docker Image
-      working-directory: ./backend
       run: docker build -t backend .
 
     - name: Run Tests in Docker
