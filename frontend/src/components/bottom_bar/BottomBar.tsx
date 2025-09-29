@@ -4,7 +4,7 @@ import VolumeControl from "./VolumeControl";
 
 export default function BottomBar() {
   return (
-    <div className="dark:bg-stone-800 dark:text-white dark:border-stone-700 fixed bottom-0 w-screen h-20 border-t-1 bg-white border-gray-200 flex flex-row items-center justify-between px-8">
+    <div className="shadow-md rounded-3xl m-2 mx-auto bg-white/20 backdrop-blur-2xl fixed bottom-0 right-0 left-0 w-99/100 h-20 border-t-1 border-white/20 flex flex-row items-center justify-between px-1">
       <NowPlaying />
       <Player />
       <VolumeControl />
