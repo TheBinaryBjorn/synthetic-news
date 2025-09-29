@@ -5,7 +5,7 @@ import { useState, ReactNode } from "react";
 export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
-    <div className="flex flex-row rounded-full p-4 bg-white/20 border-white/20 border-1 items-center justify-between gap-4 text-white">
+    <div className="shadow-md flex flex-row rounded-full p-4 bg-white/20 border-white/20 border-1 items-center justify-between gap-4 text-white">
       <RoundedButton onClick={() => setIsPlaying(!isPlaying)}>
         <SkipBack />
       </RoundedButton>
