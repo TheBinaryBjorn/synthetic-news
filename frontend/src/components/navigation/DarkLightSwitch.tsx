@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import { Sun, Moon } from "lucide-react";
+import { RoundedButton } from "../ui/Buttons";
 export default function DarkLightSwitch() {
   const [isDark, setIsDark] = useState(false);
 
@@ -17,5 +18,5 @@ export default function DarkLightSwitch() {
     localStorage.setItem("theme", newTheme ? "dark" : "light");
   };
 
-  return <button onClick={toggleTheme}>{isDark ? "Dark" : "Light"}</button>;
+  return <RoundedButton onClick={toggleTheme}>{isDark ? <Moon/> : <Sun/>}</RoundedButton>;
 }

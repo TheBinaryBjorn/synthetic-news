@@ -1,6 +1,7 @@
 "use client";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
-import { useState, ReactNode } from "react";
+import { useState } from "react";
+import { RoundedButton } from "../ui/Buttons";
 
 export default function Player() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,18 +20,3 @@ export default function Player() {
   );
 }
 
-interface RoundedButtonProps {
-  children: ReactNode;
-  onClick?: () => void;
-}
-
-export function RoundedButton({ children, onClick }: RoundedButtonProps) {
-  return (
-    <button
-      className="p-2 bg-white/1 backdrop-blur-xl rounded-full text-white hover:bg-white/30 hover:cursor-pointer duration-300 transition-all"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-}
