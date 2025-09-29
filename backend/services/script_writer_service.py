@@ -29,9 +29,11 @@ class GeminiWriterService(ScriptWriterService):
         """
         Initializes the Class with an LLM service.
         """
+        if not isinstance(llm_service, LlmService):
+            raise TypeError
         self.llm_service = llm_service
 
-    def generate_podcast_script(self, topic, research_text):
+    def generate_podcast_script(self, topic: str, research_text: str) -> str:
         """
         Generates a podcast script as a string from given topic and research summary.
         """
@@ -130,3 +132,11 @@ class GeminiWriterService(ScriptWriterService):
             with open(file_path, "w", encoding="utf-8") as file:
                 file.write(podcast_script)
         return podcast_script
+
+    def read_file_text(self, file_path: str) -> str:
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                file_text = file.read()
+                return file_text
+        else:
+            raise FileExistsError

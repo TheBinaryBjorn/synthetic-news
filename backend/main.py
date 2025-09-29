@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
 from .services.exceptions import (ResearchException, ScriptWriterException,
-                                 TopicException, TtsException)
+                                  TopicException, TtsException)
 from .services.service_manager import ServiceManager
 
 app = FastAPI()
